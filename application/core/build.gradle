@@ -1,5 +1,19 @@
 description = "Entities (domain objects) and uses cases that implement the business logic"
 
+test {
+
+    // make gradle print the test result for each test in the build (we like to see the unit tests running)
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    
+    doLast {
+        println "==========================================================================================="
+        println "Unit tests output: ${project.buildDir.absolutePath}/reports/tests"
+        println "==========================================================================================="
+    }
+}
+
 dependencies {
     compile libs.string_utils
 

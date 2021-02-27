@@ -1,9 +1,22 @@
 description = "Ways to interact with the application (e.g. Rest APIs, Jobs, GUIs, etc.)"
 
+test {
+
+    // make gradle print the test result for each test in the build (we like to see the unit tests running)
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    
+    doLast {
+        println "==========================================================================================="
+        println "Unit tests output: ${project.buildDir.absolutePath}/reports/tests"
+        println "==========================================================================================="
+    }
+}
+
 dependencies {
     compile project(":application:core")
-
-    compile libs.rest
+	compile libs.rest
     compile libs.log
 
     testCompile libs.unit_tests
